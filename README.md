@@ -8,7 +8,7 @@ Portanto, o objetivo do projeto é categorizar de A a E, de forma hierárquica, 
 Para isso, iremos avaliar uma amostra desses produtos e classificar por meio de um modelo KNN e um modelo de Árvore de Decisão para definir o melhor algoritmo de classificação.
 
 Aplicações dentro do projeto:
-- Análise Ecporatória dos Dados (AED)
+- Análise Exploratória dos Dados (AED)
 - Balanceamento
 - Normalização
 - Aprendizado Supervisionado: Classificação
