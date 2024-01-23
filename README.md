@@ -6,3 +6,10 @@ A classificação de produtos será criada para ajudar no monitoramento dos prod
 Portanto, o objetivo do projeto é categorizar de A a E, de forma hierárquica, os produtos de uma amostra com base no sua taxa de estorno, taxa de chargeback e o número de reclamações. Produtos da classe A apresentam os menores indicadores e a classe E os maiores indicadores.
 
 Para isso, iremos avaliar uma amostra desses produtos e classificar por meio de um modelo KNN e um modelo de Árvore de Decisão para definir o melhor algoritmo de classificação.
+
+Aplicações dentro do projeto:
+- Análise Ecporatória dos Dados (AED)
+- Balanceamento
+- Normalização
+- Aprendizado Supervisionado: Classificação
+- KNN e Árvore de Decisão
