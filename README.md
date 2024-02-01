@@ -13,3 +13,5 @@ Aplicações dentro do projeto:
 - Normalização
 - Aprendizado Supervisionado: Classificação
 - KNN e Árvore de Decisão
+
+Disponibilizei os dados, também, na plataforma Kaggle: https://www.kaggle.com/datasets/marianacaetano/indicadores-dos-produtos
