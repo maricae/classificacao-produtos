@@ -1,63 +1,136 @@
-## Categorização de Produtos - Classificação (Machine Learning)
+# Classificação de Risco de Produtos  
+## Machine Learning aplicado a Compliance e Monitoramento de Performance
 
-<img src="https://cdn-images-1.medium.com/max/1600/1*leQNkzi9oo3nu1PPMvtHyQ.jpeg" alt="drawing" width="800"/>
+Este projeto tem como objetivo classificar produtos digitais de uma plataforma de infoprodutos em categorias de risco (A a E), com base em indicadores operacionais e de qualidade.
 
-Uma plataforma de infoprodutos estava com dificuldades de separar os produtos bons e os ruins de sua base de dados. De acordo com a regra de negócio da empresa, produtos com altas taxas de estorno, chargeback e alto volume de reclamações são considerados produtos ruins.
+A solução foi desenvolvida para apoiar o time de compliance na priorização de análises e no monitoramento contínuo da qualidade dos produtos.
 
-A classificação dos produtos será criada para ajudar no monitoramento dos produtos e facilitar o acompanhamento mensal com base nos seus indicadores. Assim, podendo definir metas para melhorar os produtos ativos e até utilizá-las para diferentes análises e tomadas de decisões. 
+## ➡️ Problema de Negócio
 
-Portanto, o objetivo do projeto é categorizar de A a E, de forma hierárquica, os produtos de uma amostra com base na sua taxa de estorno, taxa de chargeback e o número de reclamações. Produtos da classe A apresentam os menores indicadores e a classe E os maiores indicadores.
+Produtos com:
 
-#### **Tópicos do Projeto**
+- Altas taxas de estorno
+- Elevadas taxas de chargeback
+- Grande volume de reclamações
 
-1. **Preparação do Ambiente**\
-    1.1 Importação das bibliotecas\
-    1.2 Leitura dos dados\
-    1.3 Identificação de valores faltantes
+representam risco financeiro e reputacional para a plataforma.
 
-2. **Análise Descritiva e Diagnóstica**\
-    2.1 Análise Descritiva\
-    2.2 Análise Diagnóstica
+O objetivo é transformar esses indicadores em uma **classificação estruturada de risco**, permitindo:
 
-3. **Seleção de Variáveis Usando Testes Estatísticos**\
-    3.1 Avaliação da Normalidade dos Dados\
-    3.2 Seleção de Variáveis Quantitativas (ANOVA)
+- Monitoramento mensal padronizado
+- Priorização de análise manual
+- Definição de metas de melhoria
+- Apoio à tomada de decisão estratégica
 
-4. **Preparação dos Dados**\
-    4.1 Balanceamento\
-    4.2 Normalização
+## ➡️ Estrutura da Classificação
 
-5. **Modelagem**\
-    5.1 Divisão de Treino e Teste\
-    5.2 Treinamento e Avaliação
+Os produtos são classificados de forma hierárquica:
 
-6. **Exportando o Modelo**
+- **Classe A** → menor risco
+- **Classe B**
+- **Classe C**
+- **Classe D**
+- **Classe E** → maior risco
 
-##
+A categorização é baseada nos seguintes indicadores:
 
-### Dicionário das Variáveis:
+- `tx_estorno` (taxa de estorno)
+- `tx_chargeback` (taxa de chargeback)
+- `reclamacoes` (volume de reclamações)
 
-* `produto_id`: Identificador do produto.
-* `classificacao`: Classificação do produto pré definida.
-* `tx_estorno`: Taxa de estorno.
-* `reclamacoes`: Número de reclamações.
-* `tx_chargeback`: Taxa de chargeback.
+## ➡️ Abordagem Metodológica
 
-##
+### 1. Análise Exploratória
 
-### Requisitos:
-1. [Pandas](https://pandas.pydata.org/docs/): para leitura e manipulação de dados
+- Estatísticas descritivas
+- Identificação de outliers
+- Avaliação de distribuição das variáveis
+- Diagnóstico de normalidade (Shapiro-Wilk e Kolmogorov-Smirnov)
 
-2. [Numpy](https://numpy.org/): para realizar calculos e operações de manipulação de estrutura de dados
+### 2. Seleção de Variáveis
 
-3. [Matplotlib](https://matplotlib.org/): para visualização de dados
+- Testes estatísticos (ANOVA)
+- Avaliação da relevância das variáveis preditoras
+- Redução de dimensionalidade quando necessário
 
-4. [Seaborn](https://seaborn.pydata.org/): para visualização de dados
+### 3. Preparação dos Dados
 
-5. [Imblearn](https://imbalanced-learn.org/stable/): para realizar o método de balanceamento de classes
+- Tratamento de valores ausentes
+- Normalização das variáveis
+- Balanceamento das classes (Imbalanced-learn)
 
-6. [Scikit-learn](https://scikit-learn.org/stable/install.html): para criação de modelos de machine learning
+### 4. Modelagem
 
-7. [Scipy](https://scipy.org/install/): para realizar testes estatísticos
+Modelos utilizados:
 
-8. [Joblib](https://joblib.readthedocs.io/en/stable/): para exportar o modelo
+- K-Nearest Neighbors (KNN)
+- Árvore de Decisão
+
+Procedimentos:
+
+- Divisão treino/teste
+- Avaliação comparativa de desempenho
+- Validação do modelo selecionado
+- Exportação do modelo com `joblib`
+
+## ➡️ Avaliação
+
+A avaliação considerou:
+
+- Acurácia
+- Precisão
+- Recall
+- F1-Score
+
+A escolha do modelo final levou em conta:
+
+- Capacidade de discriminar classes de maior risco
+- Interpretação dos resultados
+- Estabilidade do desempenho
+
+## ➡️ Discussões Técnicas
+
+- O balanceamento foi essencial para evitar viés em classes majoritárias.
+- A normalização impactou diretamente o desempenho do KNN.
+- Modelos mais simples podem ser preferíveis quando interpretabilidade é relevante para compliance.
+
+Extensões possíveis incluem:
+
+- Random Forest ou Gradient Boosting
+- Análise de importância de variáveis
+- Ajuste de thresholds por nível de risco
+- Monitoramento temporal do score
+
+## ➡️ Dicionário de Variáveis
+
+- `produto_id`: Identificador único do produto
+- `classificacao`: Classe alvo (A a E)
+- `tx_estorno`: Taxa de estorno
+- `tx_chargeback`: Taxa de chargeback
+- `reclamacoes`: Número de reclamações
+
+## ➡️ Tecnologias Utilizadas
+
+### Linguagem
+- Python
+
+### Manipulação e Análise
+- Pandas
+- NumPy
+
+### Visualização
+- Matplotlib
+- Seaborn
+
+### Modelagem
+- Scikit-learn
+- Imbalanced-learn
+
+### Estatística
+- SciPy
+
+### Exportação de Modelo
+- Joblib
+
+
+
